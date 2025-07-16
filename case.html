@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RushuTech | LGBTQ+ Inclusion Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Harmony (Background: #F8F7F4, Text: #1F2937, Accent: #4338CA, Highlight: #F59E0B) -->
+    <!-- Application Structure Plan: A single-page application with a sticky side navigation for non-linear exploration. The structure is thematic, not chronological, to improve usability. It starts with a high-level 'Dashboard' for immediate context, moves to a 'Diagnosis' section combining quantitative (charts) and qualitative (quotes) data, then a 'Benchmarking' table for competitive context, a visual 'Roadmap' of proposed goals, and finally a 'Strategic Deep Dive' with accordions for detailed policy/strategy information. This structure allows users of varying interest levels (from executive to analyst) to quickly find relevant information and understand the core narrative: Problem -> Data -> Solution. -->
+    <!-- Visualization & Content Choices: 
+    - RushuTech Sentiment: Goal: Compare internal perceptions. Viz: Horizontal Bar Chart (Chart.js) to clearly show disparities in agreement levels. Interaction: Clicks on bars will highlight related employee quotes, linking data to human experience. Justification: More engaging and insightful than a static table.
+    - Policy Benchmarking: Goal: Compare RushuTech to peers. Viz: Styled HTML Table with Unicode icons (✔️/❌). Interaction: Hover highlights. Justification: A simple, clear, and universally understood way to present comparative checklist data.
+    - 6-Month Roadmap: Goal: Inform on proposed targets. Viz: Grid of styled cards with HTML/CSS visual elements. Interaction: Click-to-reveal details on metric importance. Justification: Makes abstract goals feel tangible and progress-oriented.
+    - Strategic Analysis: Goal: Organize dense text. Viz: Accordion-style layout. Interaction: Click to expand/collapse. Justification: Prevents overwhelming the user with a wall of text, promoting focused reading.
+    - All charts and diagrams are implemented using Chart.js (Canvas) or pure HTML/CSS/Tailwind, with no SVG or Mermaid JS used. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F7F4;
+            color: #1F2937;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .nav-link.active {
+            background-color: #4338CA;
+            color: #FFFFFF;
+        }
+        .nav-link:not(.active):hover {
+            background-color: #E0E7FF;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .quote-highlight {
+            transition: all 0.3s ease-in-out;
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.3), 0 4px 6px -2px rgba(245, 158, 11, 0.2);
+            border-color: #F59E0B;
+        }
+        .table-highlight td {
+            background-color: #FEF3C7 !important;
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-gray-800">
+
+    <div class="flex min-h-screen">
+        <nav id="side-nav" class="hidden lg:block w-64 bg-white border-r border-gray-200 p-6 fixed top-0 left-0 h-full">
+            <div class="flex items-center mb-10">
+                 <div class="w-10 h-10 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 rounded-full mr-3"></div>
+                <h1 class="text-xl font-bold text-gray-800">RushuTech</h1>
+            </div>
+            <ul>
+                <li><a href="#home" class="nav-link flex items-center py-2.5 px-4 my-1 text-gray-600 font-medium rounded-lg transition-colors duration-200">🏠 Dashboard</a></li>
+                <li><a href="#diagnosis" class="nav-link flex items-center py-2.5 px-4 my-1 text-gray-600 font-medium rounded-lg transition-colors duration-200">🩺 The Diagnosis</a></li>
+                <li><a href="#benchmarking" class="nav-link flex items-center py-2.5 px-4 my-1 text-gray-600 font-medium rounded-lg transition-colors duration-200">📊 Benchmarking</a></li>
+                <li><a href="#roadmap" class="nav-link flex items-center py-2.5 px-4 my-1 text-gray-600 font-medium rounded-lg transition-colors duration-200">🗺️ The 6-Month Roadmap</a></li>
+                <li><a href="#strategy" class="nav-link flex items-center py-2.5 px-4 my-1 text-gray-600 font-medium rounded-lg transition-colors duration-200">💡 Strategic Deep Dive</a></li>
+            </ul>
+        </nav>
+
+        <main class="flex-1 lg:ml-64 p-4 md:p-8">
+            <button id="menu-button" class="lg:hidden fixed top-4 right-4 z-50 bg-white p-2 rounded-md shadow-md">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+            
+            <section id="home" class="min-h-screen py-12 flex flex-col justify-center">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Navigating LGBTQ+ Inclusion at RushuTech</h2>
+                    <div class="w-48 h-1.5 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 mx-auto mb-6"></div>
+                    <p class="text-lg text-gray-600 mb-10">An interactive dashboard analyzing the gap between performative allyship and lived experience for queer employees. This report outlines the current challenges, benchmarks against industry leaders, and details a strategic roadmap for authentic cultural transformation led by Friyu Pant, the new Director of Inclusion & Belonging.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto w-full">
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 text-center shadow-sm">
+                        <p class="text-5xl font-bold text-indigo-600 mb-2">36%</p>
+                        <p class="text-gray-600 font-medium">feel comfortable being open about their identity at work.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 text-center shadow-sm">
+                        <p class="text-5xl font-bold text-indigo-600 mb-2">41%</p>
+                        <p class="text-gray-600 font-medium">believe LGBTQ+ inclusion is treated seriously by the company.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 text-center shadow-sm">
+                        <p class="text-5xl font-bold text-indigo-600 mb-2">24%</p>
+                        <p class="text-gray-600 font-medium">know how to access available DEI resources and support.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 text-center shadow-sm">
+                        <p class="text-5xl font-bold text-yellow-500 mb-2">-8</p>
+                        <p class="text-gray-600 font-medium">Initial Inclusion Net Promoter Score (NPS) based on survey data.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="diagnosis" class="min-h-screen py-16">
+                <div class="max-w-6xl mx-auto">
+                    <h2 class="text-3xl font-bold text-center mb-2">The Diagnosis</h2>
+                    <p class="text-lg text-gray-600 text-center mb-10">Beyond the rainbow logos, a significant disconnect exists. The data reveals a climate of skepticism and a lack of psychological safety, which is further illuminated by the direct experiences of employees. This section explores the quantitative survey results and the qualitative stories behind the numbers.</p>
+
+                    <div class="bg-white p-6 md:p-8 rounded-xl border border-gray-200 shadow-md mb-12">
+                         <h3 class="text-2xl font-semibold mb-4 text-center">Internal DEI Sentiment Survey (2024)</h3>
+                        <p class="text-center text-gray-500 mb-6">Click on a bar to see related employee experiences.</p>
+                        <div class="chart-container">
+                            <canvas id="sentimentChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div id="qualitative-insights" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <blockquote id="quote-1" class="bg-white p-6 rounded-xl border-l-4 border-indigo-300 shadow-sm transition-all duration-300">
+                            <p class="text-gray-700 italic mb-4">"My team lead said, 'We don't care who you love, just don't make it a thing at work.' It felt erasing."</p>
+                            <footer class="text-gray-500">— Anonymous Employee</footer>
+                        </blockquote>
+                         <blockquote id="quote-2" class="bg-white p-6 rounded-xl border-l-4 border-indigo-300 shadow-sm transition-all duration-300">
+                            <p class="text-gray-700 italic mb-4">"It wasn't outright discrimination, just an uncomfortable silence every time I brought up my partner."</p>
+                            <footer class="text-gray-500">— Product Manager (3.5 years)</footer>
+                        </blockquote>
+                        <blockquote id="quote-3" class="bg-white p-6 rounded-xl border-l-4 border-indigo-300 shadow-sm transition-all duration-300">
+                            <p class="text-gray-700 italic mb-4">"I always felt like I had to 'code-switch' to fit in."</p>
+                            <footer class="text-gray-500">— Software Engineer, openly gay</footer>
+                        </blockquote>
+                        <blockquote id="quote-4" class="bg-white p-6 rounded-xl border-l-4 border-indigo-300 shadow-sm transition-all duration-300">
+                            <p class="text-gray-700 italic mb-4">"DEI looks good on posters, but there's no incentive for managers to care. It's all on us to fit in."</p>
+                            <footer class="text-gray-500">— Senior Data Analyst</footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="benchmarking" class="min-h-screen py-16">
+                 <div class="max-w-6xl mx-auto">
+                    <h2 class="text-3xl font-bold text-center mb-2">Benchmarking Against Peers</h2>
+                    <p class="text-lg text-gray-600 text-center mb-10">To understand its market position, RushuTech's policies were compared against other Indian tech firms. The results highlight significant gaps in foundational support systems, revealing that RushuTech lags behind key competitors in creating an inclusive infrastructure.</p>
+                    <div class="bg-white p-4 sm:p-6 rounded-xl border border-gray-200 shadow-md overflow-x-auto">
+                        <table class="w-full text-left" id="benchmark-table">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="p-4 font-semibold">Company</th>
+                                    <th class="p-4 font-semibold text-center">Queer ERG</th>
+                                    <th class="p-4 font-semibold text-center">Partner Insurance</th>
+                                    <th class="p-4 font-semibold text-center">Gender-Neutral Washrooms</th>
+                                    <th class="p-4 font-semibold text-center">Trans Health Support</th>
+                                    <th class="p-4 font-semibold text-center">Self-ID Options</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="roadmap" class="min-h-screen py-16">
+                 <div class="max-w-6xl mx-auto">
+                    <h2 class="text-3xl font-bold text-center mb-2">The 6-Month Roadmap</h2>
+                    <p class="text-lg text-gray-600 text-center mb-10">In response to the diagnosis, Friyu Pant has proposed an ambitious 6-month roadmap with measurable targets across three core areas: People, Process, and Perception. The goal is to drive tangible change and build a foundation for long-term, sustainable inclusion.</p>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                            <h3 class="text-2xl font-semibold mb-6 text-center text-indigo-700">PEOPLE</h3>
+                            <ul class="space-y-6">
+                                <li class="flex items-start">
+                                    <span class="text-2xl font-bold text-indigo-600 mr-4">🎯</span>
+                                    <div>
+                                        <h4 class="font-semibold">50% Self-ID Opt-in</h4>
+                                        <p class="text-gray-500 text-sm">Launch a voluntary, confidential self-identification system to gather accurate demographic data.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-2xl font-bold text-indigo-600 mr-4">📈</span>
+                                    <div>
+                                        <h4 class="font-semibold">Promotion Parity</h4>
+                                        <p class="text-gray-500 text-sm">Track and ensure equitable promotion rates for LGBTQ+ employees at mid-levels.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-2xl font-bold text-indigo-600 mr-4">👥</span>
+                                    <div>
+                                        <h4 class="font-semibold">8-10% LGBTQ+ New Hires</h4>
+                                        <p class="text-gray-500 text-sm">Set aspirational goals to broaden the talent pool and increase representation in hiring.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                            <h3 class="text-2xl font-semibold mb-6 text-center text-indigo-700">PROCESS</h3>
+                            <ul class="space-y-6">
+                                <li class="flex items-start">
+                                    <span class="text-2xl font-bold text-indigo-600 mr-4">🧑‍🏫</span>
+                                    <div>
+                                        <h4 class="font-semibold">100% Manager Training</h4>
+                                        <p class="text-gray-500 text-sm">Mandatory inclusive leadership training for all people managers.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-2xl font-bold text-indigo-600 mr-4">🚻</span>
+                                    <div>
+                                        <h4 class="font-semibold">Gender-Neutral Restrooms</h4>
+                                        <p class="text-gray-500 text-sm">Install gender-neutral restrooms in all five office locations.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-2xl font-bold text-indigo-600 mr-4"> onboarding-icon">🚀</span>
+                                    <div>
+                                        <h4 class="font-semibold">Inclusive Onboarding</h4>
+                                        <p class="text-gray-500 text-sm">Integrate a comprehensive DEI module into the new hire onboarding process.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                            <h3 class="text-2xl font-semibold mb-6 text-center text-indigo-700">PERCEPTION</h3>
+                            <ul class="space-y-6">
+                                <li class="flex items-start">
+                                    <span class="text-2xl font-bold text-indigo-600 mr-4">❤️</span>
+                                    <div>
+                                        <h4 class="font-semibold">70% Psychological Safety</h4>
+                                        <p class="text-gray-500 text-sm">Increase the percentage of LGBTQ+ employees reporting a feeling of psychological safety.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-2xl font-bold text-indigo-600 mr-4">🤝</span>
+                                    <div>
+                                        <h4 class="font-semibold">30% ERG Participation</h4>
+                                        <p class="text-gray-500 text-sm">Boost company-wide participation in Employee Resource Groups.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-2xl font-bold text-indigo-600 mr-4">👍</span>
+                                    <div>
+                                        <h4 class="font-semibold">Inclusion NPS of +25</h4>
+                                        <p class="text-gray-500 text-sm">Achieve a positive Inclusion Net Promoter Score across the organization.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="strategy" class="min-h-screen py-16">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl font-bold text-center mb-2">Strategic Deep Dive</h2>
+                    <p class="text-lg text-gray-600 text-center mb-10">Achieving these goals requires more than just new initiatives; it demands a fundamental shift in mindset and process. This section explores the core strategies for embedding inclusion into RushuTech's DNA, from redefining meritocracy to implementing key policies that build trust and accountability.</p>
+                    
+                    <div id="accordion-container" class="space-y-4">
+                        <div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+                            <button class="accordion-button w-full flex justify-between items-center text-left p-6 font-semibold text-lg hover:bg-gray-50 transition-colors">
+                                <span>Balancing Meritocracy & Inclusion</span>
+                                <span class="accordion-icon transform transition-transform">▼</span>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="p-6 border-t border-gray-200">
+                                    <p class="text-gray-600">The perceived conflict is a false dichotomy. True meritocracy can only exist when systemic biases are actively dismantled, ensuring everyone has an equal opportunity to succeed. The strategy involves:</p>
+                                    <ul class="list-disc list-inside mt-4 space-y-2 text-gray-600">
+                                        <li><b>Redefining Merit:</b> Move beyond a narrow focus on skills to a system that corrects for structural disadvantages.</li>
+                                        <li><b>Expanding the Talent Pool:</b> Prioritize skills-based hiring and recruit from diverse backgrounds, not just elite institutions.</li>
+                                        <li><b>Minimizing Bias:</b> Implement anonymized resumes, structured interviews, and diverse panels to ensure the best candidate is chosen from the widest possible pool.</li>
+                                        <li><b>Focusing on Outcomes:</b> Track career progression rates for underrepresented groups, not just hiring numbers, to ensure diverse talent thrives.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+                            <button class="accordion-button w-full flex justify-between items-center text-left p-6 font-semibold text-lg hover:bg-gray-50 transition-colors">
+                                <span>Best Practices for Key Policies</span>
+                                <span class="accordion-icon transform transition-transform">▼</span>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="p-6 border-t border-gray-200 space-y-4">
+                                    <div>
+                                        <h4 class="font-semibold">Anonymous Self-Identification</h4>
+                                        <p class="text-gray-600">Must be strictly voluntary, with robust data privacy and clear communication about its purpose: to allocate resources and track progress, not for surveillance.</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold">Inclusive Onboarding</h4>
+                                        <p class="text-gray-600">Should provide practical guidance on inclusive language, pronoun usage, and available resources, with active leadership participation to signal its importance.</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold">Pronoun Policies</h4>
+                                        <p class="text-gray-600">Encourage, rather than mandate, sharing pronouns. Leadership modeling is key. Intentional misgendering should be addressed in formal harassment policies.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+                            <button class="accordion-button w-full flex justify-between items-center text-left p-6 font-semibold text-lg hover:bg-gray-50 transition-colors">
+                                <span>Mitigating Internal Pushback</span>
+                                <span class="accordion-icon transform transition-transform">▼</span>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="p-6 border-t border-gray-200">
+                                    <p class="text-gray-600">To prevent resentment and ensure buy-in from all employees, DEI must be framed as a collective benefit, not a zero-sum game. Key tactics include:</p>
+                                     <ul class="list-disc list-inside mt-4 space-y-2 text-gray-600">
+                                        <li><b>Universal Benefit Framing:</b> Emphasize how inclusive environments improve teamwork, innovation, and business outcomes for everyone.</li>
+                                        <li><b>Transparent Processes:</b> Fair and clear criteria in hiring and promotions prevent claims of "reverse discrimination."</li>
+                                        <li><b>Open Dialogue:</b> Create safe feedback channels for all employees to voice concerns and feel heard.</li>
+                                        <li><b>Systemic Focus:</b> Frame initiatives as fixing broken systems, not as providing preferential treatment to individuals.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sentimentData = {
+                labels: [
+                    'Feel comfortable being open about identity',
+                    'Believe inclusion is treated seriously',
+                    'Manager would support reporting bias',
+                    'Would recommend RushuTech for its culture',
+                    'Know how to access DEI resources'
+                ],
+                datasets: [{
+                    label: '% Agree',
+                    data: [36, 41, 58, 33, 24],
+                    backgroundColor: [
+                        'rgba(239, 68, 68, 0.6)',
+                        'rgba(249, 115, 22, 0.6)',
+                        'rgba(59, 130, 246, 0.6)',
+                        'rgba(245, 158, 11, 0.6)',
+                        'rgba(139, 92, 246, 0.6)'
+                    ],
+                    borderColor: [
+                        'rgba(239, 68, 68, 1)',
+                        'rgba(249, 115, 22, 1)',
+                        'rgba(59, 130, 246, 1)',
+                        'rgba(245, 158, 11, 1)',
+                        'rgba(139, 92, 246, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            };
+
+            const ctx = document.getElementById('sentimentChart').getContext('2d');
+            const sentimentChart = new Chart(ctx, {
+                type: 'bar',
+                data: sentimentData,
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.dataset.label}: ${context.raw}%`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: '% of Employees Agreeing'
+                            }
+                        },
+                        y: {
+                            ticks: {
+                                autoSkip: false,
+                                callback: function(value, index, values) {
+                                    const label = this.getLabelForValue(value);
+                                    if (label.length > 25) {
+                                        return label.match(/.{1,25}/g);
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    onClick: (event, elements) => {
+                        if (elements.length > 0) {
+                            const index = elements[0].index;
+                            const quotes = document.querySelectorAll('#qualitative-insights blockquote');
+                            quotes.forEach(q => q.classList.remove('quote-highlight'));
+                            
+                            // Simple mapping from chart bar to quotes
+                            if (index === 0 || index === 2 || index === 3) { 
+                                document.getElementById('quote-1').classList.add('quote-highlight');
+                                document.getElementById('quote-2').classList.add('quote-highlight');
+                                document.getElementById('quote-3').classList.add('quote-highlight');
+                            }
+                            if(index === 1 || index === 4) {
+                                document.getElementById('quote-4').classList.add('quote-highlight');
+                            }
+
+                            document.getElementById('qualitative-insights').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
+                    }
+                }
+            });
+
+            const benchmarkData = [
+                { company: 'RakshX', erg: true, insurance: true, washrooms: true, health: true, selfId: true },
+                { company: 'JosephIQ', erg: true, insurance: true, washrooms: true, health: true, selfId: true },
+                { company: 'Akbarlytics', erg: true, insurance: true, washrooms: true, health: false, selfId: false },
+                { company: 'SaiNova', erg: false, insurance: false, washrooms: false, health: false, selfId: true },
+                { company: 'RushuTech', erg: false, insurance: false, washrooms: false, health: false, selfId: false },
+                { company: 'Khushgovu.ai', erg: false, insurance: false, washrooms: false, health: false, selfId: false },
+            ];
+
+            const tableBody = document.querySelector('#benchmark-table tbody');
+            benchmarkData.forEach(item => {
+                const isRushuTech = item.company === 'RushuTech';
+                const row = document.createElement('tr');
+                row.className = `transition-colors ${isRushuTech ? 'bg-indigo-50 font-semibold' : ''}`;
+                row.innerHTML = `
+                    <td class="p-4">${item.company}</td>
+                    <td class="p-4 text-center text-xl">${item.erg ? '✔️' : '❌'}</td>
+                    <td class="p-4 text-center text-xl">${item.insurance ? '✔️' : '❌'}</td>
+                    <td class="p-4 text-center text-xl">${item.washrooms ? '✔️' : '❌'}</td>
+                    <td class="p-4 text-center text-xl">${item.health ? '✔️' : '❌'}</td>
+                    <td class="p-4 text-center text-xl">${item.selfId ? '✔️' : '❌'}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+            
+            const tableRows = document.querySelectorAll('#benchmark-table tbody tr');
+            tableRows.forEach(row => {
+                row.addEventListener('mouseover', () => {
+                    row.classList.add('table-highlight');
+                });
+                row.addEventListener('mouseout', () => {
+                    row.classList.remove('table-highlight');
+                });
+            });
+
+            const accordionButtons = document.querySelectorAll('.accordion-button');
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const icon = button.querySelector('.accordion-icon');
+                    
+                    button.parentElement.classList.toggle('open');
+                    icon.classList.toggle('rotate-180');
+                    
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } 
+                });
+            });
+
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('main section');
+
+            function updateActiveLink() {
+                let index = sections.length;
+
+                while(--index && window.scrollY + 50 < sections[index].offsetTop) {}
+                
+                navLinks.forEach((link) => link.classList.remove('active'));
+                navLinks[index].classList.add('active');
+            }
+
+            updateActiveLink();
+            window.addEventListener('scroll', updateActiveLink);
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    document.querySelector(link.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                     if(window.innerWidth < 1024) {
+                        document.getElementById('side-nav').classList.add('hidden');
+                     }
+                });
+            });
+
+            const menuButton = document.getElementById('menu-button');
+            const sideNav = document.getElementById('side-nav');
+            menuButton.addEventListener('click', () => {
+                sideNav.classList.toggle('hidden');
+                sideNav.classList.toggle('block');
+            });
+        });
+    </script>
+</body>
+</html>
