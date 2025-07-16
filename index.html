@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Chosen Palette: Calm Harmony (Background: #F8F7F4, Text: #1F2937, Accent: #4338CA, Highlight: #F59E0B) -->
-    <!-- Application Structure Plan: A single-page application with a sticky side navigation for non-linear exploration. The structure is thematic, not chronological, to improve usability. It starts with a high-level 'Dashboard' for immediate context, moves to an 'Executive Summary' for a quick overview, then a 'Diagnosis' section combining quantitative (charts) and qualitative (quotes & detailed text) data. This is followed by a 'Benchmarking' table for competitive context, a visual 'Roadmap' of proposed goals, and finally a 'Strategic Deep Dive' with expanded accordions for detailed policy/strategy information. A 'Conclusion' provides final thoughts, and a 'Resource Links' section offers external references. This structure allows users of varying interest levels (from executive to analyst) to quickly find relevant information and understand the core narrative: Problem -> Data -> Solution. -->
+    <!-- Application Structure Plan: A single-page application with a sticky side navigation for non-linear exploration. The structure is thematic, not chronological, to improve usability. It starts with a high-level 'Dashboard' for immediate context, moves to an 'Executive Summary' for a quick overview, then a 'Diagnosis' section combining quantitative (charts) and qualitative (quotes & detailed text) data. This is followed by a 'Benchmarking' table for competitive context, a visual 'Roadmap' of proposed goals, and finally a 'Strategic Deep Dive' with expanded accordions for detailed policy/strategy information, including industry standards and trade-offs. A 'Conclusion' provides final thoughts, and a 'Resource Links' section offers external references. This structure allows users of varying interest levels (from executive to analyst) to quickly find relevant information and understand the core narrative: Problem -> Data -> Solution. -->
     <!-- Visualization & Content Choices: 
     - RushuTech Sentiment: Goal: Compare internal perceptions. Viz: Horizontal Bar Chart (Chart.js) to clearly show disparities in agreement levels. Interaction: Clicks on bars will highlight related employee quotes, linking data to human experience. Justification: More engaging and insightful than a static table.
     - Policy Benchmarking: Goal: Compare RushuTech to peers. Viz: Styled HTML Table with Unicode icons (✔️/❌). Interaction: Hover highlights. Justification: A simple, clear, and universally understood way to present comparative checklist data.
@@ -296,6 +296,29 @@
                     <div id="accordion-container" class="space-y-4">
                         <div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
                             <button class="accordion-button w-full flex justify-between items-center text-left p-6 font-semibold text-lg hover:bg-gray-50 transition-colors">
+                                <span>Industry Standards for LGBTQ+ Inclusion</span>
+                                <span class="accordion-icon transform transition-transform">▼</span>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="p-6 border-t border-gray-200">
+                                    <p class="text-gray-600 mb-4">To effectively build its LGBTQ+ inclusion strategy, RushuTech should benchmark against leading industry practices. These standards encompass a range of policies, benefits, and cultural elements that foster a truly inclusive environment:</p>
+                                    <ul class="list-disc list-inside mt-4 space-y-2 text-gray-600">
+                                        <li><b>Formal & Funded ERGs:</b> Leading companies like RakshX and JosephIQ have well-established, formally recognized, and adequately funded Queer Employee Resource Groups (ERGs) that provide community, support, and a channel for feedback. RushuTech's informal group needs to be formalized and resourced.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></li>
+                                        <li><b>Comprehensive Partner Insurance:</b> Industry leaders offer partner insurance benefits that extend to same-sex partners, demonstrating equitable treatment in compensation and benefits. This is a significant gap for RushuTech.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></li>
+                                        <li><b>Universal Gender-Neutral Washrooms:</b> Best practice involves installing gender-neutral restrooms across all office locations, not just headquarters, to ensure physical safety and inclusivity for transgender and gender non-conforming employees.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></li>
+                                        <li><b>Robust Trans Health Support:</b> Comprehensive health benefits that include gender-affirming care and mental health support for transgender employees are standard among leading inclusive companies.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></li>
+                                        <li><b>Formal Self-Identification Options:</b> Industry best practices, as seen in RakshX and JosephIQ, include formal, voluntary, and confidential self-identification channels integrated into HRIS, allowing employees to accurately represent their identities and enabling data-driven DEI initiatives.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a><a href="#resource-31" class="text-indigo-600 hover:underline">[31]</a></li>
+                                        <li><b>Bias-Minimized Hiring & Promotion:</b> Companies like Godrej Industries use anonymized resumes, structured interviews, and diverse panels to reduce unconscious bias in talent acquisition and progression, ensuring merit is truly recognized.<a href="#resource-10" class="text-indigo-600 hover:underline">[10]</a><a href="#resource-18" class="text-indigo-600 hover:underline">[18]</a><a href="#resource-20" class="text-indigo-600 hover:underline">[20]</a></li>
+                                        <li><b>LGBTQ+ Leadership Representation:</b> While still low across the Indian tech industry (2-3%), leading firms are actively working to increase LGBTQ+ representation in senior management, recognizing its impact on ESG scores and overall performance.<a href="#resource-7" class="text-indigo-600 hover:underline">[7]</a><a href="#resource-24" class="text-indigo-600 hover:underline">[24]</a><a href="#resource-33" class="text-indigo-600 hover:underline">[33]</a></li>
+                                        <li><b>Dedicated Mentorship/Sponsorship Programs:</b> Programs specifically designed for LGBTQ+ employees, mirroring those at Merck Group and Godrej, are crucial for career progression and leadership development.<a href="#resource-5" class="text-indigo-600 hover:underline">[5]</a><a href="#resource-28" class="text-indigo-600 hover:underline">[28]</a></li>
+                                        <li><b>High Psychological Safety:</b> A hallmark of inclusive workplaces is a high degree of psychological safety, where employees feel safe to be authentic without fear of punishment or humiliation.<a href="#resource-6" class="text-indigo-600 hover:underline">[6]</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+                            <button class="accordion-button w-full flex justify-between items-center text-left p-6 font-semibold text-lg hover:bg-gray-50 transition-colors">
                                 <span>Balancing Meritocracy & Inclusion</span>
                                 <span class="accordion-icon transform transition-transform">▼</span>
                             </button>
@@ -381,7 +404,7 @@
 
                         <div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
                             <button class="accordion-button w-full flex justify-between items-center text-left p-6 font-semibold text-lg hover:bg-gray-50 transition-colors">
-                                <span>Evaluation of Proposed 6-Month Metrics</span>
+                                <span>Evaluation of Proposed 6-Month Metrics & Trade-offs</span>
                                 <span class="accordion-icon transform transition-transform">▼</span>
                             </button>
                             <div class="accordion-content">
@@ -393,7 +416,7 @@
                                                 <th class="p-4 font-semibold">Category</th>
                                                 <th class="p-4 font-semibold">Evaluation</th>
                                                 <th class="p-4 font-semibold">Strengths</th>
-                                                <th class="p-4 font-semibold">Weaknesses/Risks</th>
+                                                <th class="p-4 font-semibold">Trade-offs/Risks (Parameters: Cost, Time, Internal Resistance, External Perception, Data Accuracy, Psychological Safety)</th>
                                                 <th class="p-4 font-semibold">Key Considerations for Success</th>
                                             </tr>
                                         </thead>
@@ -403,7 +426,8 @@
                                                 <td class="p-4">People</td>
                                                 <td class="p-4">Ambitious</td>
                                                 <td class="p-4">Provides crucial demographic data for targeted initiatives; empowers employees to self-identify on their own terms.</td>
-                                                <td class="p-4">High ambition given current 36% comfort level <a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a> and &lt;5% formal self-ID in industry <a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a>; risks deepening distrust if privacy is not robust.</td>
+                                                <td class="p-4"><b>Trade-offs:</b> High internal resistance (trust deficit, fear of tokenism), time-consuming to build trust, high risk to psychological safety if mishandled.
+                                                <b>Risks:</b> Deepening distrust if privacy is not robust; data inaccuracy if opt-in is low.</td>
                                                 <td class="p-4">Requires significant trust-building, clear communication on data usage (not for surveillance/tokenism), and robust privacy protocols.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a><a href="#resource-31" class="text-indigo-600 hover:underline">[31]</a></td>
                                             </tr>
                                             <tr>
@@ -411,7 +435,8 @@
                                                 <td class="p-4">People</td>
                                                 <td class="p-4">Very Aggressive</td>
                                                 <td class="p-4">Directly addresses career progression issues and holds managers accountable for equitable opportunities.</td>
-                                                <td class="p-4">Highly ambitious for 6 months given "opaque promotion processes" <a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a>; requires accurate baseline self-ID data; risks accusations of "forced" promotions without transparent criteria.</td>
+                                                <td class="p-4"><b>Trade-offs:</b> High internal resistance (perceived "forced" promotions), time-intensive to implement transparent processes, potential for negative external perception if criteria are unclear.
+                                                <b>Risks:</b> Accusations of "forced" promotions without transparent criteria; requires accurate baseline self-ID data.</td>
                                                 <td class="p-4">Implement transparent promotion criteria, unconscious bias training for evaluators, and a fair review mechanism.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></td>
                                             </tr>
                                             <tr>
@@ -419,7 +444,8 @@
                                                 <td class="p-4">People</td>
                                                 <td class="p-4">Bold & Ambitious</td>
                                                 <td class="p-4">Directly addresses hiring bias and sends a strong message about commitment to diversity.</td>
-                                                <td class="p-4">Very ambitious given current tech industry estimates of 2-3% LGBTQ+ representation <a href="#resource-33" class="text-indigo-600 hover:underline">[33]</a> and 55% of Indian recruiters struggling to find skilled LGBTQ+ developers <a href="#resource-34" class="text-indigo-600 hover:underline">[34]</a>; risks alienating "apolitical" teams and perceptions of quotas.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a><a href="#resource-25" class="text-indigo-600 hover:underline">[25]</a></td>
+                                                <td class="p-4"><b>Trade-offs:</b> High internal resistance (perception of quotas, alienating "apolitical" teams), potential for increased cost in recruitment, requires significant time to build diverse pipelines.
+                                                <b>Risks:</b> Perceptions of quotas; difficulty finding skilled LGBTQ+ talent in India; alienating non-LGBTQ+ teams.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a><a href="#resource-25" class="text-indigo-600 hover:underline">[25]</a><a href="#resource-33" class="text-indigo-600 hover:underline">[33]</a><a href="#resource-34" class="text-indigo-600 hover:underline">[34]</a></td>
                                                 <td class="p-4">Communicate as an aspirational goal to broaden talent pool; implement anonymized resumes and inclusive onboarding.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></td>
                                             </tr>
                                             <tr>
@@ -427,7 +453,8 @@
                                                 <td class="p-4">Process</td>
                                                 <td class="p-4">Foundational & Impactful</td>
                                                 <td class="p-4">Addresses managers' "unsureness" <a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a>; empowers managers to foster inclusion.</td>
-                                                <td class="p-4">Logistically challenging for 2,000+ employees in 6 months; quality and effectiveness of training are paramount.</td>
+                                                <td class="p-4"><b>Trade-offs:</b> Significant cost and time investment for 2,000+ employees; quality of training is crucial; potential for superficial compliance if not engaging.
+                                                <b>Risks:</b> Logistical challenges for large workforce; ineffective training if not tailored and practical.</td>
                                                 <td class="p-4">Training must be practical, engaging, and include accountability mechanisms for application.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></td>
                                             </tr>
                                             <tr>
@@ -435,7 +462,8 @@
                                                 <td class="p-4">Process</td>
                                                 <td class="p-4">Tangible & Visible</td>
                                                 <td class="p-4">Provides safe physical space for transgender employees; clear signal of progress.</td>
-                                                <td class="p-4">Potential initial discomfort from conservative employees.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></td>
+                                                <td class="p-4"><b>Trade-offs:</b> Moderate cost for infrastructure changes; potential initial discomfort from conservative employees (internal resistance).
+                                                <b>Risks:</b> Negative internal perception if not communicated effectively.</td>
                                                 <td class="p-4">Clear communication about purpose and benefits can mitigate resistance.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></td>
                                             </tr>
                                             <tr>
@@ -443,7 +471,8 @@
                                                 <td class="p-4">Process</td>
                                                 <td class="p-4">Proactive & Excellent</td>
                                                 <td class="p-4">Normalizes LGBTQ+ presence from Day 1; sets tone for inclusive culture.</td>
-                                                <td class="p-4">Content and delivery are critical; risks being superficial if not well-designed.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></td>
+                                                <td class="p-4"><b>Trade-offs:</b> Time investment for content creation and delivery; requires consistent quality.
+                                                <b>Risks:</b> Being perceived as superficial if not well-designed or reinforced.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></td>
                                                 <td class="p-4">Module should be engaging, informative, and include practical guidance on inclusive language and resources.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></td>
                                             </tr>
                                             <tr>
@@ -451,7 +480,8 @@
                                                 <td class="p-4">Perception</td>
                                                 <td class="p-4">Most Critical Outcome</td>
                                                 <td class="p-4">Directly measures impact on lived experience and emotional well-being.</td>
-                                                <td class="p-4">Ambitious given current 36% comfort <a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a>; surveys must be truly anonymous to encourage honest feedback.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></td>
+                                                <td class="p-4"><b>Trade-offs:</b> Ambitious target given current low comfort (36%); requires sustained effort across all other strategies; dependent on honest feedback (psychological safety for data accuracy).
+                                                <b>Risks:</b> Surveys must be truly anonymous to encourage honest feedback; slow progress could lead to further disillusionment.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></td>
                                                 <td class="p-4">Requires significant, visible, and consistent effort across all other metrics to build trust; regular communication about actions taken based on results.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></td>
                                             </tr>
                                             <tr>
@@ -459,7 +489,8 @@
                                                 <td class="p-4">Perception</td>
                                                 <td class="p-4">Engagement & Community</td>
                                                 <td class="p-4">Fosters sense of community and belonging; provides peer support and feedback.</td>
-                                                <td class="p-4">Participation might be low if employees fear being outed; quality and impact depend on leadership and funding.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></td>
+                                                <td class="p-4"><b>Trade-offs:</b> Requires funding and leadership support (cost); participation might be low if employees fear being outed (psychological safety, internal resistance).
+                                                <b>Risks:</b> ERGs might be seen as tokenistic if not genuinely empowered; quality and impact depend on leadership and funding.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></td>
                                                 <td class="p-4">Ensure ERGs are well-funded, have clear mandates, and are seen as safe spaces; promote broadly.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></td>
                                             </tr>
                                             <tr>
@@ -467,7 +498,8 @@
                                                 <td class="p-4">Perception</td>
                                                 <td class="p-4">Overall Health Check</td>
                                                 <td class="p-4">Provides a broad measure of inclusive workplace sentiment across all employees.</td>
-                                                <td class="p-4">Lagging indicator; can be influenced by many factors beyond LGBTQ+ inclusion.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></td>
+                                                <td class="p-4"><b>Trade-offs:</b> Lagging indicator (takes time to see impact); can be influenced by many factors beyond LGBTQ+ inclusion.
+                                                <b>Risks:</b> May not directly reflect LGBTQ+ specific progress if questions are too broad.</td>
                                                 <td class="p-4">Ensure survey questions are specific enough to reflect DEI impact; reflects overall positive shifts in workplace culture.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></td>
                                             </tr>
                                         </tbody>
