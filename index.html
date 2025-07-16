@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Chosen Palette: Calm Harmony (Background: #F8F7F4, Text: #1F2937, Accent: #4338CA, Highlight: #F59E0B) -->
-    <!-- Application Structure Plan: A single-page application with a sticky side navigation for non-linear exploration. The structure is thematic, not chronological, to improve usability. It starts with a high-level 'Dashboard' for immediate context, moves to a 'Diagnosis' section combining quantitative (charts) and qualitative (quotes) data, then a 'Benchmarking' table for competitive context, a visual 'Roadmap' of proposed goals, and finally a 'Strategic Deep Dive' with accordions for detailed policy/strategy information. This structure allows users of varying interest levels (from executive to analyst) to quickly find relevant information and understand the core narrative: Problem -> Data -> Solution. -->
+    <!-- Application Structure Plan: A single-page application with a sticky side navigation for non-linear exploration. The structure is thematic, not chronological, to improve usability. It starts with a high-level 'Dashboard' for immediate context, moves to an 'Executive Summary' for a quick overview, then a 'Diagnosis' section combining quantitative (charts) and qualitative (quotes & detailed text) data. This is followed by a 'Benchmarking' table for competitive context, a visual 'Roadmap' of proposed goals, and finally a 'Strategic Deep Dive' with expanded accordions for detailed policy/strategy information. A 'Conclusion' provides final thoughts, and a 'Resource Links' section offers external references. This structure allows users of varying interest levels (from executive to analyst) to quickly find relevant information and understand the core narrative: Problem -> Data -> Solution. -->
     <!-- Visualization & Content Choices: 
     - RushuTech Sentiment: Goal: Compare internal perceptions. Viz: Horizontal Bar Chart (Chart.js) to clearly show disparities in agreement levels. Interaction: Clicks on bars will highlight related employee quotes, linking data to human experience. Justification: More engaging and insightful than a static table.
     - Policy Benchmarking: Goal: Compare RushuTech to peers. Viz: Styled HTML Table with Unicode icons (✔️/❌). Interaction: Hover highlights. Justification: A simple, clear, and universally understood way to present comparative checklist data.
@@ -64,17 +64,20 @@
 <body class="bg-stone-50 text-gray-800">
 
     <div class="flex min-h-screen">
-        <nav id="side-nav" class="hidden lg:block w-64 bg-white border-r border-gray-200 p-6 fixed top-0 left-0 h-full">
+        <nav id="side-nav" class="hidden lg:block w-64 bg-white border-r border-gray-200 p-6 fixed top-0 left-0 h-full overflow-y-auto">
             <div class="flex items-center mb-10">
                  <div class="w-10 h-10 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 rounded-full mr-3"></div>
                 <h1 class="text-xl font-bold text-gray-800">RushuTech</h1>
             </div>
             <ul>
                 <li><a href="#home" class="nav-link flex items-center py-2.5 px-4 my-1 text-gray-600 font-medium rounded-lg transition-colors duration-200">🏠 Dashboard</a></li>
+                <li><a href="#executive-summary" class="nav-link flex items-center py-2.5 px-4 my-1 text-gray-600 font-medium rounded-lg transition-colors duration-200">📝 Executive Summary</a></li>
                 <li><a href="#diagnosis" class="nav-link flex items-center py-2.5 px-4 my-1 text-gray-600 font-medium rounded-lg transition-colors duration-200">🩺 The Diagnosis</a></li>
                 <li><a href="#benchmarking" class="nav-link flex items-center py-2.5 px-4 my-1 text-gray-600 font-medium rounded-lg transition-colors duration-200">📊 Benchmarking</a></li>
                 <li><a href="#roadmap" class="nav-link flex items-center py-2.5 px-4 my-1 text-gray-600 font-medium rounded-lg transition-colors duration-200">🗺️ The 6-Month Roadmap</a></li>
                 <li><a href="#strategy" class="nav-link flex items-center py-2.5 px-4 my-1 text-gray-600 font-medium rounded-lg transition-colors duration-200">💡 Strategic Deep Dive</a></li>
+                <li><a href="#conclusion" class="nav-link flex items-center py-2.5 px-4 my-1 text-gray-600 font-medium rounded-lg transition-colors duration-200">✅ Conclusion</a></li>
+                <li><a href="#resources" class="nav-link flex items-center py-2.5 px-4 my-1 text-gray-600 font-medium rounded-lg transition-colors duration-200">🔗 Resources</a></li>
             </ul>
         </nav>
 
@@ -112,10 +115,22 @@
                 </div>
             </section>
 
+            <section id="executive-summary" class="min-h-screen py-16">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl font-bold text-center mb-2">Executive Summary</h2>
+                    <p class="text-lg text-gray-600 text-center mb-10">This section provides a high-level overview of the key challenges, findings, and strategic recommendations for LGBTQ+ inclusion at RushuTech, setting the stage for the detailed analysis that follows.</p>
+                    <div class="bg-white p-6 md:p-8 rounded-xl border border-gray-200 shadow-md">
+                        <p class="text-gray-700 mb-4">RushuTech, a prominent Bengaluru-based B2B SaaS firm with over 2,000 employees, is at a critical juncture regarding its LGBTQ+ inclusion efforts. Despite visible, albeit largely symbolic, initiatives such as Pride Month celebrations and sensitization workshops, a significant disconnect persists between leadership's stated commitment and the lived experiences of queer employees. This has fostered widespread skepticism, a pervasive lack of psychological safety, and the clustering of LGBTQ+ talent in junior roles, leading to quiet attrition. Concurrently, external pressures, particularly from investor advisory firms flagging insufficient ESG scores, underscore the urgent need for substantive change.</p>
+                        <p class="text-gray-700 mb-4">This report analyzes RushuTech’s current challenges, drawing on internal sentiment data and industry benchmarks. It proposes a multi-pronged strategic roadmap designed to move beyond performative allyship towards genuine institutional change. Key problems identified include deep-seated distrust, opaque promotion processes, the absence of formal self-identification channels, and the disproportionate burden of "unseen labor" placed on queer employees.</p>
+                        <p class="text-gray-700">The strategic imperative is clear: authentic LGBTQ+ inclusion is not merely a social responsibility but a critical business driver for talent retention, attraction, innovation, and sustained competitive advantage. The core recommendations focus on rebuilding internal trust through transparent communication and unwavering leadership accountability, implementing equitable hiring and promotion systems, establishing robust policy infrastructure, and leveraging data-driven metrics to track a measurable cultural transformation. This approach aims to enhance psychological safety, improve talent acquisition and retention, strengthen ESG performance, and cultivate a truly inclusive culture that fosters innovation and employee well-being across the organization.</p>
+                    </div>
+                </div>
+            </section>
+
             <section id="diagnosis" class="min-h-screen py-16">
                 <div class="max-w-6xl mx-auto">
                     <h2 class="text-3xl font-bold text-center mb-2">The Diagnosis</h2>
-                    <p class="text-lg text-gray-600 text-center mb-10">Beyond the rainbow logos, a significant disconnect exists. The data reveals a climate of skepticism and a lack of psychological safety, which is further illuminated by the direct experiences of employees. This section explores the quantitative survey results and the qualitative stories behind the numbers.</p>
+                    <p class="text-lg text-gray-600 text-center mb-10">Beyond the rainbow logos, a significant disconnect exists. The data reveals a climate of skepticism and a lack of psychological safety, which is further illuminated by the direct experiences of employees. This section explores the quantitative survey results and the qualitative stories behind the numbers, alongside a deeper dive into the internal and external pressures.</p>
 
                     <div class="bg-white p-6 md:p-8 rounded-xl border border-gray-200 shadow-md mb-12">
                          <h3 class="text-2xl font-semibold mb-4 text-center">Internal DEI Sentiment Survey (2024)</h3>
@@ -125,7 +140,7 @@
                         </div>
                     </div>
                     
-                    <div id="qualitative-insights" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div id="qualitative-insights" class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
                         <blockquote id="quote-1" class="bg-white p-6 rounded-xl border-l-4 border-indigo-300 shadow-sm transition-all duration-300">
                             <p class="text-gray-700 italic mb-4">"My team lead said, 'We don't care who you love, just don't make it a thing at work.' It felt erasing."</p>
                             <footer class="text-gray-500">— Anonymous Employee</footer>
@@ -143,13 +158,26 @@
                             <footer class="text-gray-500">— Senior Data Analyst</footer>
                         </blockquote>
                     </div>
+
+                    <div class="bg-white p-6 md:p-8 rounded-xl border border-gray-200 shadow-md mb-8">
+                        <h3 class="text-2xl font-semibold mb-4">Analysis of Internal Skepticism and Psychological Safety Deficits</h3>
+                        <p class="text-gray-700 mb-4">RushuTech's internal environment is marked by significant skepticism and a profound lack of psychological safety among its LGBTQ+ employees. The company's 2024 DEI Sentiment Survey reveals concerning trends: only 36% of employees feel comfortable being open about their identity at work, and a mere 41% believe LGBTQ+ inclusion is treated seriously within the organization.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a> Furthermore, only 24% of employees know how to access DEI resources, and a meager 33% would recommend RushuTech for its inclusive culture.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></p>
+                        <p class="text-gray-700 mb-4">The qualitative data from Friyu’s "listening tour" and exit interviews paints an even more vivid picture of discomfort and alienation. Transgender employees face challenges accessing gender-affirming healthcare, and a pervasive fear of being outed prevents employees from attending "Pride at Work" events.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a> The absence of gender-neutral restrooms across most locations further exacerbates feelings of exclusion for transgender and gender non-conforming individuals.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a> HR teams, often the first point of contact for such issues, are "unsure how to respond to reports of microaggressions or misuse of pronouns".<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a> These experiences underscore a severe lack of psychological safety, defined as the belief that one will not be punished or humiliated for sharing their thoughts and feelings.<a href="#resource-6" class="text-indigo-600 hover:underline">[6]</a></p>
+                        <p class="text-gray-700">The "cosmetic" nature of RushuTech's previous DEI efforts is not merely ineffective; it is actively detrimental. This performative allyship, when unmet by genuine cultural support, leads to deeper skepticism and a chilling effect where employees feel unsafe to be authentic. Rebuilding trust necessitates moving beyond superficial displays to tangible, consistent actions that demonstrate genuine commitment, particularly from managers, who are currently perceived as lacking incentive to prioritize inclusion.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></p>
+                    </div>
+                    <div class="bg-white p-6 md:p-8 rounded-xl border border-gray-200 shadow-md mb-8">
+                        <h3 class="text-2xl font-semibold mb-4">Examination of External Pressures and Internal Pushback</h3>
+                        <p class="text-gray-700 mb-4">Friyu's role is further complicated by the strategic tension between external market demands and internal cultural resistance. On one hand, RushuTech faces significant external pressure. An investor advisory firm has flagged the company's ESG (Environmental, Social, and Governance) scores for insufficient focus on inclusivity, putting the firm at risk of being dropped from a socially responsible investment index.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a> This concern is well-founded, as companies with visible LGBTQ+ directors have been shown to achieve higher ESG scores and outperform their peers financially.<a href="#resource-7" class="text-indigo-600 hover:underline">[7]</a> This positions DEI not merely as a moral imperative but as a critical business advantage.<a href="#resource-3" class="text-indigo-600 hover:underline">[3]</a><a href="#resource-8" class="text-indigo-600 hover:underline">[8]</a></p>
+                        <p class="text-gray-700 mb-4">On the other hand, Friyu encounters internal pushback. Some senior engineers have anonymously expressed discomfort with what they term a "sudden identity agenda," arguing that workplace diversity should be "natural" and not forced through formal targets or policy mandates.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a> This resistance often stems from a misunderstanding or mischaracterization of DEI, frequently perceived as "reverse discrimination" or a compromise to meritocracy.<a href="#resource-9" class="text-indigo-600 hover:underline">[9]</a><a href="#resource-10" class="text-indigo-600 hover:underline">[10]</a></p>
+                        <p class="text-gray-700">A particularly troubling trend observed at RushuTech is the reliance on "unseen labor" from its queer employees. Those who are out at work are "repeatedly asked to 'educate' others or participate in diversity panels without additional compensation or role clarity".<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a> This practice, as one employee poignantly stated, "I'm not your DEI department just because I'm gay".<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a> The emotional burden of representation disproportionately falls on those already marginalized, leading to exhaustion and burnout.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></p>
+                    </div>
                 </div>
             </section>
             
             <section id="benchmarking" class="min-h-screen py-16">
                  <div class="max-w-6xl mx-auto">
                     <h2 class="text-3xl font-bold text-center mb-2">Benchmarking Against Peers</h2>
-                    <p class="text-lg text-gray-600 text-center mb-10">To understand its market position, RushuTech's policies were compared against other Indian tech firms. The results highlight significant gaps in foundational support systems, revealing that RushuTech lags behind key competitors in creating an inclusive infrastructure.</p>
+                    <p class="text-lg text-gray-600 text-center mb-10">To understand its market position, RushuTech's policies were compared against other Indian tech firms. The results highlight significant gaps in foundational support systems, revealing that RushuTech lags behind key competitors in creating an inclusive infrastructure. This comparison clearly shows that RushuTech lags significantly behind leading Indian tech firms like RakshX and JosephIQ in critical policy areas such as partner insurance, gender-neutral washrooms, and formal self-identification options. This competitive gap underscores the urgency for rapid policy reform and provides a concrete basis for prioritizing Friyu's strategic initiatives.</p>
                     <div class="bg-white p-4 sm:p-6 rounded-xl border border-gray-200 shadow-md overflow-x-auto">
                         <table class="w-full text-left" id="benchmark-table">
                             <thead class="bg-gray-50">
@@ -173,7 +201,7 @@
             <section id="roadmap" class="min-h-screen py-16">
                  <div class="max-w-6xl mx-auto">
                     <h2 class="text-3xl font-bold text-center mb-2">The 6-Month Roadmap</h2>
-                    <p class="text-lg text-gray-600 text-center mb-10">In response to the diagnosis, Friyu Pant has proposed an ambitious 6-month roadmap with measurable targets across three core areas: People, Process, and Perception. The goal is to drive tangible change and build a foundation for long-term, sustainable inclusion.</p>
+                    <p class="text-lg text-gray-600 text-center mb-10">In response to the diagnosis, Friyu Pant has proposed an ambitious 6-month roadmap with measurable targets across three core areas: People, Process, and Perception. The goal is to drive tangible change and build a foundation for long-term, sustainable inclusion. The proposed metrics demonstrate a clear understanding of the multi-faceted nature of inclusion, covering representation, systemic changes, and employee experience. Many of the metrics are highly interconnected, with success in one area often dependent on progress in others.</p>
 
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                         <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
@@ -263,7 +291,7 @@
             <section id="strategy" class="min-h-screen py-16">
                 <div class="max-w-4xl mx-auto">
                     <h2 class="text-3xl font-bold text-center mb-2">Strategic Deep Dive</h2>
-                    <p class="text-lg text-gray-600 text-center mb-10">Achieving these goals requires more than just new initiatives; it demands a fundamental shift in mindset and process. This section explores the core strategies for embedding inclusion into RushuTech's DNA, from redefining meritocracy to implementing key policies that build trust and accountability.</p>
+                    <p class="text-lg text-gray-600 text-center mb-10">Achieving these goals requires more than just new initiatives; it demands a fundamental shift in mindset and process. This section explores the core strategies for embedding inclusion into RushuTech's DNA, from redefining meritocracy to implementing key policies that build trust and accountability, and provides a detailed evaluation of the proposed metrics.</p>
                     
                     <div id="accordion-container" class="space-y-4">
                         <div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
@@ -273,12 +301,30 @@
                             </button>
                             <div class="accordion-content">
                                 <div class="p-6 border-t border-gray-200">
-                                    <p class="text-gray-600">The perceived conflict is a false dichotomy. True meritocracy can only exist when systemic biases are actively dismantled, ensuring everyone has an equal opportunity to succeed. The strategy involves:</p>
+                                    <p class="text-gray-600 mb-4">The perceived tension between RushuTech's "meritocratic identity" and its "inclusion goals" is a false dichotomy. A truly meritocratic system is one where <i>everyone</i> has an equal opportunity to compete and succeed, which inherently necessitates actively dismantling biases that historically privilege certain groups. Inclusion, by removing these barriers, expands the talent pool and strengthens actual merit.</p>
+                                    <p class="text-gray-600 mb-4">To achieve this balance, RushuTech must first <b>redefine its understanding of meritocracy</b>. This involves shifting from a narrow view focused "purely on skills and qualifications" to a broader system that "corrects structural biases" and ensures "everyone starts on an equal footing".<a href="#resource-11" class="text-indigo-600 hover:underline">[11]</a></p>
+                                    <p class="text-gray-600 mb-4">Second, the company needs to <b>expand its definition of talent</b>. This means moving beyond traditional recruitment sources, such as elite institutions, to prioritize skills-based hiring and actively recruit from diverse backgrounds, including tier-2 and tier-3 cities, mirroring successful strategies employed by Infosys and HUL.<a href="#resource-11" class="text-indigo-600 hover:underline">[11]</a></p>
+                                    <p class="text-gray-600 mb-4">Third, <b>bias minimization</b> must be integrated into all talent processes. Implementing practices like anonymized resumes, as demonstrated by Godrej Industries, which saw a 49% improvement in shortlisting women by masking gender <a href="#resource-10" class="text-indigo-600 hover:underline">[10]</a>, alongside structured interviews and diverse interview panels, will significantly reduce unconscious bias.<a href="#resource-10" class="text-indigo-600 hover:underline">[10]</a><a href="#resource-18" class="text-indigo-600 hover:underline">[18]</a><a href="#resource-20" class="text-indigo-600 hover:underline">[20]</a><a href="#resource-21" class="text-indigo-600 hover:underline">[21]</a></p>
+                                    <p class="text-gray-600 mb-4">Fourth, the focus should shift to <b>measuring inclusion outcomes, not just diversity numbers</b>. This means tracking career progression rates for underrepresented groups, rather than solely focusing on diversity hires.<a href="#resource-11" class="text-indigo-600 hover:underline">[11]</a></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+                            <button class="accordion-button w-full flex justify-between items-center text-left p-6 font-semibold text-lg hover:bg-gray-50 transition-colors">
+                                <span>Key Barriers to Attracting and Retaining LGBTQ+ Talent</span>
+                                <span class="accordion-icon transform transition-transform">▼</span>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="p-6 border-t border-gray-200">
+                                    <p class="text-gray-600 mb-4">RushuTech's current talent management system presents several systemic barriers to attracting and retaining LGBTQ+ talent, creating a "leaky pipeline" that actively discourages and drives away valuable employees.</p>
                                     <ul class="list-disc list-inside mt-4 space-y-2 text-gray-600">
-                                        <li><b>Redefining Merit:</b> Move beyond a narrow focus on skills to a system that corrects for structural disadvantages.</li>
-                                        <li><b>Expanding the Talent Pool:</b> Prioritize skills-based hiring and recruit from diverse backgrounds, not just elite institutions.</li>
-                                        <li><b>Minimizing Bias:</b> Implement anonymized resumes, structured interviews, and diverse panels to ensure the best candidate is chosen from the widest possible pool.</li>
-                                        <li><b>Focusing on Outcomes:</b> Track career progression rates for underrepresented groups, not just hiring numbers, to ensure diverse talent thrives.</li>
+                                        <li>A primary barrier is <b>hiring bias</b>, which Friyu herself identified as a systemic issue.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></li>
+                                        <li>The <b>lack of queer representation in leadership</b> is another significant systemic issue.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a><a href="#resource-24" class="text-indigo-600 hover:underline">[24]</a></li>
+                                        <li>Furthermore, <b>opaque promotion processes</b> have been cited as a reason for quiet exits.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></li>
+                                        <li>The pervasive <b>lack of psychological safety and discomfort with self-expression</b> forces employees to "code-switch" and fear being outed, impacting both attraction and retention.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></li>
+                                        <li>The <b>absence of formal self-identification channels</b> at RushuTech <a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a> makes it difficult to accurately track LGBTQ+ representation and specific needs.</li>
+                                        <li>Finally, the use of <b>non-inclusive language or limited gender options in application forms and job postings</b> can inadvertently deter transgender and non-binary candidates.<a href="#resource-23" class="text-indigo-600 hover:underline">[23]</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -292,16 +338,16 @@
                             <div class="accordion-content">
                                 <div class="p-6 border-t border-gray-200 space-y-4">
                                     <div>
-                                        <h4 class="font-semibold">Anonymous Self-Identification</h4>
-                                        <p class="text-gray-600">Must be strictly voluntary, with robust data privacy and clear communication about its purpose: to allocate resources and track progress, not for surveillance.</p>
+                                        <h4 class="font-semibold">Anonymous Self-Identification Systems</h4>
+                                        <p class="text-gray-600 mb-2">These systems are essential for <b>collecting accurate demographic data</b> to understand the diversity of the workforce, identify underrepresented groups, and track progress over time.<a href="#resource-19" class="text-indigo-600 hover:underline">[19]</a><a href="#resource-31" class="text-indigo-600 hover:underline">[31]</a> For successful implementation, self-identification must be <b>strictly voluntary</b>, accompanied by robust data privacy protocols.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a><a href="#resource-31" class="text-indigo-600 hover:underline">[31]</a></p>
                                     </div>
                                     <div>
-                                        <h4 class="font-semibold">Inclusive Onboarding</h4>
-                                        <p class="text-gray-600">Should provide practical guidance on inclusive language, pronoun usage, and available resources, with active leadership participation to signal its importance.</p>
+                                        <h4 class="font-semibold">Inclusive Onboarding Modules</h4>
+                                        <p class="text-gray-600 mb-2">These modules play a crucial role in <b>normalizing LGBTQ+ presence from Day 1</b>, setting an immediate tone for an inclusive culture, and educating new hires on expected inclusive language and behavior.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a> Implementation should involve <b>comprehensive content</b> that includes practical guidance on inclusive language, pronoun usage, microaggressions, and available internal resources.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a><a href="#resource-20" class="text-indigo-600 hover:underline">[20]</a></p>
                                     </div>
                                     <div>
                                         <h4 class="font-semibold">Pronoun Policies</h4>
-                                        <p class="text-gray-600">Encourage, rather than mandate, sharing pronouns. Leadership modeling is key. Intentional misgendering should be addressed in formal harassment policies.</p>
+                                        <p class="text-gray-600 mb-2">Formal pronoun policies are a direct and visible way to <b>show validation, dignity, and respect</b> for individuals' identities.<a href="#resource-17" class="text-indigo-600 hover:underline">[17]</a> They help normalize pronoun sharing, creating a more inclusive and psychologically safe environment. Initially, RushuTech should <b>encourage, rather than mandate</b>, employees and leaders to include their pronouns in email signatures, video conferencing names, and introductions.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a><a href="#resource-14" class="text-indigo-600 hover:underline">[14]</a><a href="#resource-15" class="text-indigo-600 hover:underline">[15]</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -309,21 +355,185 @@
 
                         <div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
                             <button class="accordion-button w-full flex justify-between items-center text-left p-6 font-semibold text-lg hover:bg-gray-50 transition-colors">
-                                <span>Mitigating Internal Pushback</span>
+                                <span>Mitigating Internal Pushback and Ensuring Career Progression</span>
                                 <span class="accordion-icon transform transition-transform">▼</span>
                             </button>
                             <div class="accordion-content">
                                 <div class="p-6 border-t border-gray-200">
-                                    <p class="text-gray-600">To prevent resentment and ensure buy-in from all employees, DEI must be framed as a collective benefit, not a zero-sum game. Key tactics include:</p>
+                                    <p class="text-gray-600 mb-4">To prevent resentment and ensure buy-in from all employees, DEI must be framed as a collective benefit, not a zero-sum game. Key tactics include:</p>
                                      <ul class="list-disc list-inside mt-4 space-y-2 text-gray-600">
-                                        <li><b>Universal Benefit Framing:</b> Emphasize how inclusive environments improve teamwork, innovation, and business outcomes for everyone.</li>
-                                        <li><b>Transparent Processes:</b> Fair and clear criteria in hiring and promotions prevent claims of "reverse discrimination."</li>
-                                        <li><b>Open Dialogue:</b> Create safe feedback channels for all employees to voice concerns and feel heard.</li>
-                                        <li><b>Systemic Focus:</b> Frame initiatives as fixing broken systems, not as providing preferential treatment to individuals.</li>
+                                        <li><b>Universal Benefit Framing:</b> Emphasize how inclusive environments improve teamwork, innovation, and business outcomes for everyone.<a href="#resource-8" class="text-indigo-600 hover:underline">[8]</a><a href="#resource-9" class="text-indigo-600 hover:underline">[9]</a><a href="#resource-13" class="text-indigo-600 hover:underline">[13]</a><a href="#resource-22" class="text-indigo-600 hover:underline">[22]</a></li>
+                                        <li><b>Transparent Processes:</b> Fair and clear criteria in hiring and promotions prevent claims of "reverse discrimination".<a href="#resource-11" class="text-indigo-600 hover:underline">[11]</a><a href="#resource-18" class="text-indigo-600 hover:underline">[18]</a></li>
+                                        <li><b>Open Dialogue:</b> Create safe feedback channels for all employees to voice concerns and feel heard.<a href="#resource-12" class="text-indigo-600 hover:underline">[12]</a><a href="#resource-18" class="text-indigo-600 hover:underline">[18]</a></li>
+                                        <li><b>Systemic Focus:</b> Frame initiatives as fixing broken systems, not as providing preferential treatment to individuals.<a href="#resource-11" class="text-indigo-600 hover:underline">[11]</a><a href="#resource-32" class="text-indigo-600 hover:underline">[32]</a></li>
+                                    </ul>
+                                    <p class="text-gray-600 mt-4 mb-4">The current "opaque promotion processes" at RushuTech are a significant barrier, contributing to the "clustering in junior roles" for queer employees and driving attrition.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a> To design a fair and inclusive promotion process that accounts for both performance and identity-based challenges, several key mechanisms are necessary:</p>
+                                    <ul class="list-disc list-inside mt-4 space-y-2 text-gray-600">
+                                        <li><b>Establish clear, objective, and transparent promotion criteria</b>.<a href="#resource-18" class="text-indigo-600 hover:underline">[18]</a></li>
+                                        <li><b>Unconscious bias training for all managers and leaders</b> involved in promotion decisions is critical.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a><a href="#resource-18" class="text-indigo-600 hover:underline">[18]</a><a href="#resource-20" class="text-indigo-600 hover:underline">[20]</a><a href="#resource-21" class="text-indigo-600 hover:underline">[21]</a></li>
+                                        <li><b>Diverse promotion panels</b> should be implemented.<a href="#resource-18" class="text-indigo-600 hover:underline">[18]</a><a href="#resource-20" class="text-indigo-600 hover:underline">[20]</a><a href="#resource-21" class="text-indigo-600 hover:underline">[21]</a></li>
+                                        <li>The company should <b>implement mentorship and sponsorship programs</b> specifically designed for LGBTQ+ employees.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a><a href="#resource-5" class="text-indigo-600 hover:underline">[5]</a><a href="#resource-11" class="text-indigo-600 hover:underline">[11]</a><a href="#resource-18" class="text-indigo-600 hover:underline">[18]</a></li>
+                                        <li>Finally, RushuTech must actively <b>track promotion parity for LGBTQ+ employees at mid-level</b> as a key metric.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a><a href="#resource-19" class="text-indigo-600 hover:underline">[19]</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+                            <button class="accordion-button w-full flex justify-between items-center text-left p-6 font-semibold text-lg hover:bg-gray-50 transition-colors">
+                                <span>Evaluation of Proposed 6-Month Metrics</span>
+                                <span class="accordion-icon transform transition-transform">▼</span>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="p-6 border-t border-gray-200 overflow-x-auto">
+                                    <table class="w-full text-left">
+                                        <thead class="bg-gray-50">
+                                            <tr>
+                                                <th class="p-4 font-semibold">Metric</th>
+                                                <th class="p-4 font-semibold">Category</th>
+                                                <th class="p-4 font-semibold">Evaluation</th>
+                                                <th class="p-4 font-semibold">Strengths</th>
+                                                <th class="p-4 font-semibold">Weaknesses/Risks</th>
+                                                <th class="p-4 font-semibold">Key Considerations for Success</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y divide-gray-200">
+                                            <tr>
+                                                <td class="p-4">50% opt-in to voluntary LGBTQ+ self-identification</td>
+                                                <td class="p-4">People</td>
+                                                <td class="p-4">Ambitious</td>
+                                                <td class="p-4">Provides crucial demographic data for targeted initiatives; empowers employees to self-identify on their own terms.</td>
+                                                <td class="p-4">High ambition given current 36% comfort level <a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a> and &lt;5% formal self-ID in industry <a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a>; risks deepening distrust if privacy is not robust.</td>
+                                                <td class="p-4">Requires significant trust-building, clear communication on data usage (not for surveillance/tokenism), and robust privacy protocols.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a><a href="#resource-31" class="text-indigo-600 hover:underline">[31]</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-4">Promotion parity for LGBTQ+ employees at mid-level</td>
+                                                <td class="p-4">People</td>
+                                                <td class="p-4">Very Aggressive</td>
+                                                <td class="p-4">Directly addresses career progression issues and holds managers accountable for equitable opportunities.</td>
+                                                <td class="p-4">Highly ambitious for 6 months given "opaque promotion processes" <a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a>; requires accurate baseline self-ID data; risks accusations of "forced" promotions without transparent criteria.</td>
+                                                <td class="p-4">Implement transparent promotion criteria, unconscious bias training for evaluators, and a fair review mechanism.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-4">8-10% LGBTQ+ representation in new hires</td>
+                                                <td class="p-4">People</td>
+                                                <td class="p-4">Bold & Ambitious</td>
+                                                <td class="p-4">Directly addresses hiring bias and sends a strong message about commitment to diversity.</td>
+                                                <td class="p-4">Very ambitious given current tech industry estimates of 2-3% LGBTQ+ representation <a href="#resource-33" class="text-indigo-600 hover:underline">[33]</a> and 55% of Indian recruiters struggling to find skilled LGBTQ+ developers <a href="#resource-34" class="text-indigo-600 hover:underline">[34]</a>; risks alienating "apolitical" teams and perceptions of quotas.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a><a href="#resource-25" class="text-indigo-600 hover:underline">[25]</a></td>
+                                                <td class="p-4">Communicate as an aspirational goal to broaden talent pool; implement anonymized resumes and inclusive onboarding.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-4">100% of people managers trained in inclusive leadership</td>
+                                                <td class="p-4">Process</td>
+                                                <td class="p-4">Foundational & Impactful</td>
+                                                <td class="p-4">Addresses managers' "unsureness" <a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a>; empowers managers to foster inclusion.</td>
+                                                <td class="p-4">Logistically challenging for 2,000+ employees in 6 months; quality and effectiveness of training are paramount.</td>
+                                                <td class="p-4">Training must be practical, engaging, and include accountability mechanisms for application.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-4">Gender-neutral restrooms in all offices</td>
+                                                <td class="p-4">Process</td>
+                                                <td class="p-4">Tangible & Visible</td>
+                                                <td class="p-4">Provides safe physical space for transgender employees; clear signal of progress.</td>
+                                                <td class="p-4">Potential initial discomfort from conservative employees.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></td>
+                                                <td class="p-4">Clear communication about purpose and benefits can mitigate resistance.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-4">Inclusion onboarding for all new employees</td>
+                                                <td class="p-4">Process</td>
+                                                <td class="p-4">Proactive & Excellent</td>
+                                                <td class="p-4">Normalizes LGBTQ+ presence from Day 1; sets tone for inclusive culture.</td>
+                                                <td class="p-4">Content and delivery are critical; risks being superficial if not well-designed.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></td>
+                                                <td class="p-4">Module should be engaging, informative, and include practical guidance on inclusive language and resources.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-4">70% of LGBTQ+ employees report feeling psychologically safe (via pulse surveys)</td>
+                                                <td class="p-4">Perception</td>
+                                                <td class="p-4">Most Critical Outcome</td>
+                                                <td class="p-4">Directly measures impact on lived experience and emotional well-being.</td>
+                                                <td class="p-4">Ambitious given current 36% comfort <a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a>; surveys must be truly anonymous to encourage honest feedback.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></td>
+                                                <td class="p-4">Requires significant, visible, and consistent effort across all other metrics to build trust; regular communication about actions taken based on results.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-4">30% ERG participation company-wide</td>
+                                                <td class="p-4">Perception</td>
+                                                <td class="p-4">Engagement & Community</td>
+                                                <td class="p-4">Fosters sense of community and belonging; provides peer support and feedback.</td>
+                                                <td class="p-4">Participation might be low if employees fear being outed; quality and impact depend on leadership and funding.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></td>
+                                                <td class="p-4">Ensure ERGs are well-funded, have clear mandates, and are seen as safe spaces; promote broadly.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-4">Inclusion NPS of +25 or higher</td>
+                                                <td class="p-4">Perception</td>
+                                                <td class="p-4">Overall Health Check</td>
+                                                <td class="p-4">Provides a broad measure of inclusive workplace sentiment across all employees.</td>
+                                                <td class="p-4">Lagging indicator; can be influenced by many factors beyond LGBTQ+ inclusion.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></td>
+                                                <td class="p-4">Ensure survey questions are specific enough to reflect DEI impact; reflects overall positive shifts in workplace culture.<a href="#resource-1" class="text-indigo-600 hover:underline">[1]</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="conclusion" class="min-h-screen py-16">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl font-bold text-center mb-2">Conclusion: Sustaining Institutional Change</h2>
+                    <p class="text-lg text-gray-600 text-center mb-10">This section summarizes the key takeaways and reiterates the importance of sustained commitment for long-term success in fostering a truly inclusive environment at RushuTech.</p>
+                    <div class="bg-white p-6 md:p-8 rounded-xl border border-gray-200 shadow-md">
+                        <p class="text-gray-700 mb-4">RushuTech stands at a pivotal moment, poised to transform its approach to LGBTQ+ inclusion from largely symbolic gestures to deeply embedded institutional change. The analysis presented in this report underscores that authentic LGBTQ+ inclusion is not merely a social responsibility but a strategic imperative for the company's long-term success. It directly impacts the ability to attract and retain top talent, foster innovation, enhance market reputation through improved ESG scores, and ultimately drive sustained business growth in a competitive landscape.</p>
+                        <p class="text-gray-700 mb-4">The proposed roadmap, with its ambitious yet achievable metrics, represents the beginning of a continuous journey. It demands sustained commitment from leadership, adaptive strategies to navigate internal resistance and external pressures, and rigorous, ongoing measurement to track genuine progress. By prioritizing the rebuilding of trust through transparent communication and visible leadership modeling, RushuTech can address the pervasive skepticism and foster a psychologically safe environment where all employees feel comfortable being their authentic selves.</p>
+                        <p class="text-gray-700 mb-4">Implementing equitable hiring and promotion frameworks, alongside robust policy infrastructure such as voluntary self-identification, inclusive onboarding, and clear pronoun guidelines, will dismantle systemic biases and ensure that merit is truly recognized without prejudice. Critically, these initiatives must be framed as beneficial for all employees and the organization as a whole, transforming DEI into a shared value that strengthens RushuTech's meritocratic identity rather than undermining it.</p>
+                        <p class="text-gray-700">Ultimately, sustaining this transformation requires embedding inclusion deeply into RushuTech's culture, policies, and daily operations, ensuring it is "deeply felt and experienced" by every employee. This is a collective responsibility, driven by unwavering leadership commitment, enabled by a well-resourced and competent HR function, and embraced by every individual within the organization. The path forward for RushuTech is clear: to move beyond superficial allyship and build a truly inclusive workplace that champions diversity as a core driver of its future success.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="resources" class="min-h-screen py-16">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl font-bold text-center mb-2">Resource Links</h2>
+                    <p class="text-lg text-gray-600 text-center mb-10">Here are the external resources and references cited in this report for further reading and verification.</p>
+                    <div class="bg-white p-6 md:p-8 rounded-xl border border-gray-200 shadow-md">
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li id="resource-1"><a href="uploaded:Equilead 2025_Case.pdf" target="_blank" class="text-indigo-600 hover:underline">[1] Equilead 2025 Case Document</a></li>
+                            <li id="resource-2"><a href="https://www.britsafe.in/safety-management-news/2024/time-to-take-pride-the-problems-faced-by-india-s-lgbtq-employees" target="_blank" class="text-indigo-600 hover:underline">[2] BritSafe: Time to Take Pride: The problems faced by India’s LGBTQ+ employees</a></li>
+                            <li id="resource-3"><a href="https://www.tandfonline.com/doi/full/10.1080/0966369X.2022.2146660" target="_blank" class="text-indigo-600 hover:underline">[3] Taylor & Francis Online: Diversity work and the politics of inclusion: An intersectional analysis of LGBTQ+ inclusion in Indian workplaces</a></li>
+                            <li id="resource-4"><a href="https://en.wikipedia.org/wiki/LGBTQ_rights_in_India" target="_blank" class="text-indigo-600 hover:underline">[4] Wikipedia: LGBTQ rights in India</a></li>
+                            <li id="resource-5"><a href="https://www.cdpp.co.in/articles/humara-bhi-haque-hain---inclusion-of-the-lgbtq-community-in-the-tech-industry" target="_blank" class="text-indigo-600 hover:underline">[5] CDPP: Humara Bhi Haque Hain - Inclusion of the LGBTQ+ Community in the Tech Industry</a></li>
+                            <li id="resource-6"><a href="https://www.emerald.com/insight/content/doi/10.1108/srj-01-2024-0071/full/pdf?title=lgbtq-inclusion-in-the-workplace-examining-the-roles-of-climate-leadership-and-psychological-empowerment-to-determine-satisfaction" target="_blank" class="text-indigo-600 hover:underline">[6] Emerald Insight: LGBTQ+ inclusion in the workplace: Examining the roles of climate, leadership, and psychological empowerment to determine satisfaction</a></li>
+                            <li id="resource-7"><a href="https://beformidable.com/p/firms-with-lgbtq-board-members-outperform-peers" target="_blank" class="text-indigo-600 hover:underline">[7] BeFormidable: Firms with LGBTQ+ board members outperform peers</a></li>
+                            <li id="resource-8"><a href="https://alp.consulting/india-inc-accelerating-lgntq-inclusion/" target="_blank" class="text-indigo-600 hover:underline">[8] ALP Consulting: India Inc. Accelerating LGBTQ+ Inclusion</a></li>
+                            <li id="resource-9"><a href="https://seramount.com/articles/5-strategies-to-continue-dei-work-in-the-face-of-backlash/" target="_blank" class="text-indigo-600 hover:underline">[9] Seramount: 5 Strategies to Continue DEI Work in the Face of Backlash</a></li>
+                            <li id="resource-10"><a href="https://www.fortuneindia.com/long-reads/meritocracy-vs-diversity-the-debate-thats-bafflingcorporateindia/121668" target="_blank" class="text-indigo-600 hover:underline">[10] Fortune India: Meritocracy vs. Diversity: The debate that’s baffling corporate India</a></li>
+                            <li id="resource-11"><a href="https://www.changeincontent.com/meritocracy-and-diversity-in-indian-workplaces/" target="_blank" class="text-indigo-600 hover:underline">[11] Change in Content: Meritocracy and Diversity in Indian Workplaces</a></li>
+                            <li id="resource-12"><a href="https://www.diversityresources.com/how-to-address-employee-disengagement-around-dei/" target="_blank" class="text-indigo-600 hover:underline">[12] Diversity Resources: How to address employee disengagement around DEI</a></li>
+                            <li id="resource-13"><a href="https://www.sap.com/sea/insights/viewpoints/why-dei-backlash-exists.html" target="_blank" class="text-indigo-600 hover:underline">[13] SAP: Why DEI Backlash Exists</a></li>
+                            <li id="resource-14"><a href="https://www.springworks.in/blog/gender-pronouns-in-organization/" target="_blank" class="text-indigo-600 hover:underline">[14] Springworks: Gender Pronouns in Organization</a></li>
+                            <li id="resource-15"><a href="https://www.cultureamp.com/blog/gender-pronouns-in-workplace" target="_blank" class="text-indigo-600 hover:underline">[15] Culture Amp: Gender Pronouns in the Workplace</a></li>
+                            <li id="resource-16"><a href="https://www.workrisenetwork.org/working-knowledge/better-business-outcomes-here-are-basics-lgbtq-workplace-policies-and-practices" target="_blank" class="text-indigo-600 hover:underline">[16] WorkRise Network: Better Business Outcomes: Here are the basics of LGBTQ+ workplace policies and practices</a></li>
+                            <li id="resource-17"><a href="https://www.worktango.com/resources/articles/best-practices-and-expert-tips-for-a-more-queer-inclusive-workplace" target="_blank" class="text-indigo-600 hover:underline">[17] WorkTango: Best Practices and Expert Tips for a More Queer-Inclusive Workplace</a></li>
+                            <li id="resource-18"><a href="https://www.diversitycertification.org/6-keys-to-authentic-dei-avoiding-the-pitfalls-of-diversity-tokenism" target="_blank" class="text-indigo-600 hover:underline">[18] Diversity Certification: 6 Keys to Authentic DEI: Avoiding the Pitfalls of Diversity Tokenism</a></li>
+                            <li id="resource-19"><a href="https://wellhub.com/en-us/blog/organizational-development/dei-metrics/" target="_blank" class="text-indigo-600 hover:underline">[19] Wellhub: DEI Metrics: How to Measure Diversity, Equity, and Inclusion</a></li>
+                            <li id="resource-20"><a href="https://info.recruitics.com/blog/lgbtq-friendly-recruitment-best-practices-and-tips-for-2024" target="_blank" class="text-indigo-600 hover:underline">[20] Recruitics: LGBTQ-Friendly Recruitment: Best Practices and Tips for 2024</a></li>
+                            <li id="resource-21"><a href="https://www.cogentinfo.com/resources/why-lgbtq-representation-should-be-a-priority-for-business" target="_blank" class="text-indigo-600 hover:underline">[21] Cogent Info: Why LGBTQ+ Representation Should Be a Priority for Business</a></li>
+                            <li id="resource-22"><a href="https://firstup.io/blog/15-ways-to-improve-diversity-and-inclusion-in-the-workplace/" target="_blank" class="text-indigo-600 hover:underline">[22] Firstup: 15 Ways to Improve Diversity and Inclusion in the Workplace</a></li>
+                            <li id="resource-23"><a href="https://www.thepridecircle.com/site/assets/files/17458/hiring_lgbt_talent.pdf" target="_blank" class="text-indigo-600 hover:underline">[23] The Pride Circle: Hiring LGBT Talent</a></li>
+                            <li id="resource-24"><a href="https://thewire.in/society/gender/what-queer-professionals-in-leadership-roles-face-in-india" target="_blank" class="text-indigo-600 hover:underline">[24] The Wire: What Queer Professionals in Leadership Roles Face in India</a></li>
+                            <li id="resource-25"><a href="https://www.sixdegreesexecutive.com.au/your-career/2019/10/the-pros-and-cons-of-diversity-and-inclusion-quotas" target="_blank" class="text-indigo-600 hover:underline">[25] Six Degrees Executive: The Pros and Cons of Diversity and Inclusion Quotas</a></li>
+                            <li id="resource-26"><a href="https://www.beapplied.com/post/diversity-quotas" target="_blank" class="text-indigo-600 hover:underline">[26] Be Applied: Diversity Quotas</a></li>
+                            <li id="resource-27"><a href="https://www.tuckerlaw.com/2025/03/27/distilling-the-latest-dei-developments-understanding-recent-federal-guidance-and-the-significance-of-the-reverse-discrimination-case-before-the-supreme-court/" target="_blank" class="text-indigo-600 hover:underline">[27] Tucker Law: Distilling the Latest DEI Developments: Understanding Recent Federal Guidance and the Significance of the Reverse Discrimination Case Before the Supreme Court</a></li>
+                            <li id="resource-28"><a href="https://etedge-insights.com/resources/brands-speak/roadmap-to-lgbt-inclusion-corporate-best-practices-of-2024-and-beyond/" target="_blank" class="text-indigo-600 hover:underline">[28] ET Edge Insights: Roadmap to LGBT Inclusion: Corporate Best Practices of 2024 and Beyond</a></li>
+                            <li id="resource-29"><a href="https://www.cdpp.co.in/articles/gender-inclusive-innovation-why-india-s-tech-industry-must-design-for-her-too" target="_blank" class="text-indigo-600 hover:underline">[29] CDPP: Gender Inclusive Innovation: Why India’s Tech Industry Must Design for Her Too</a></li>
+                            <li id="resource-30"><a href="https://www.enterpriseappstoday.com/stats/diversity-in-tech-statistics.html" target="_blank" class="text-indigo-600 hover:underline">[30] Enterprise Apps Today: Diversity in Tech Statistics</a></li>
+                            <li id="resource-31"><a href="https://hrc-prod-requests.s3-us-west-2.amazonaws.com/HRSI-SOGI-102122rev-1.pdf" target="_blank" class="text-indigo-600 hover:underline">[31] Human Rights Campaign: Corporate Equality Index: SOGI Data Collection Best Practices</a></li>
+                            <li id="resource-32"><a href="https://membership.diversityatlas.io/info-hub/dei-is-reverse-discrimination/" target="_blank" class="text-indigo-600 hover:underline">[32] Diversity Atlas: DEI is Reverse Discrimination?</a></li>
+                            <li id="resource-33"><a href="https://newsisout.com/2024/11/lgbtq-representation-and-inclusion-in-the-tech-sector/29038/" target="_blank" class="text-indigo-600 hover:underline">[33] News Is Out: LGBTQ+ Representation and Inclusion in the Tech Sector</a></li>
+                            <li id="resource-34"><a href="https://hr.economictimes.indiatimes.com/news/workplace-4-0/diversity-and-inclusion/55-of-india-inc-companies-struggle-to-find-skilled-lgbtq-developers/92139214" target="_blank" class="text-indigo-600 hover:underline">[34] HR Economic Times: 55% of India Inc companies struggle to find skilled LGBTQ+ developers</a></li>
+                            <li id="resource-35"><a href="https://www.psychopediajournals.com/index.php/ijiap/article/view/517?articlesBySimilarityPage=4" target="_blank" class="text-indigo-600 hover:underline">[35] Psychopedia Journals: LGBTQ+ Inclusion in the Workplace: Examining the Roles of Climate, Leadership, and Psychological Empowerment to Determine Satisfaction</a></li>
+                        </ul>
                     </div>
                 </div>
             </section>
@@ -486,7 +696,9 @@
                 while(--index && window.scrollY + 50 < sections[index].offsetTop) {}
                 
                 navLinks.forEach((link) => link.classList.remove('active'));
-                navLinks[index].classList.add('active');
+                if (navLinks[index]) { // Ensure index is valid
+                    navLinks[index].classList.add('active');
+                }
             }
 
             updateActiveLink();
